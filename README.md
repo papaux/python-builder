@@ -20,7 +20,7 @@ to fetch the corresponding python version.
 Documentation about build hooks is really hard to find, especially what is the default build command.
 
 These links can be useful to understand:
-- [What is the build hook](https://docs.docker.com/docker-hub/builds/advanced/#override-build-test-or-push-commands)
+- [What is a build hook](https://docs.docker.com/docker-hub/builds/advanced/#override-build-test-or-push-commands)
 - [Example of a build hook](https://github.com/SamueleA/docker-hub-auto-build-tutorial/blob/ec2743d606bf290f6707547c8c1439d20bdf2298/hooks/build#L1)
 - [Environment Variables](https://docs.docker.com/docker-hub/builds/advanced/#custom-build-phase-hooks)
 

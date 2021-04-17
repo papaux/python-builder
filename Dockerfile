@@ -1,5 +1,5 @@
-ARG DOCKER_TAG
-FROM python:${DOCKER_TAG}-slim
+ARG PYTHON_VERSION
+FROM python:${PYTHON_VERSION}-slim
 
 RUN apt-get update \
     && apt-get install -y docker.io \

@@ -5,7 +5,7 @@ A builder docker image based on official python images, adding tools like docker
 ## Build locally
 
 ```
-docker build --build-args PYTHON_VERSION=3.7 .
+docker build -t python-builder --build-args PYTHON_VERSION=3.7 .
 ```
 
 ## Download from docker hub
@@ -16,6 +16,11 @@ This image is published in [hub.docker.com](https://hub.docker.com/r/papaux/pyth
 
 Instead of providing one Dockerfile per version, this image relies on the configured docker tag
 to fetch the corresponding python version.
+
+It will basically pick whatever "Docker Tag" is configured from the Build Rules. For instance:
+
+![example-docker-hub-docker-tag](https://gist.githubusercontent.com/papaux/101c5efb2cc124ab594465572f43ac33/raw/31fb9105e45d983ff91113c8003e051a22e4620c/docker-hub-build-rules.png)
+
 
 Documentation about build hooks is really hard to find, especially what is the default build command.
 

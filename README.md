@@ -12,7 +12,7 @@ docker build -t python-builder --build-args PYTHON_VERSION=3.7 .
 
 This image is published in [hub.docker.com](https://hub.docker.com/r/papaux/python-builder).
 
-## Build hook
+## Docker Hub build hook
 
 Instead of providing one Dockerfile per version, this image relies on the configured docker tag
 to fetch the corresponding python version.

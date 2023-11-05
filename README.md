@@ -1,11 +1,13 @@
 # python-builder
 
+**note**: build is not automated anymore, thanks to docker hub removing automation for free account.
+
 A builder docker image based on official python images, adding tools like docker for CI builds.
 
 ## Build locally
 
 ```
-docker build -t python-builder --build-args PYTHON_VERSION=3.7 .
+docker build -t python-builder --build-arg PYTHON_VERSION=3.7 .
 ```
 
 ## Download from docker hub

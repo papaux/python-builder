@@ -1,6 +1,6 @@
 # python-builder
 
-**note**: build is not automated anymore, thanks to docker hub removing automation for free account.
+**note**: build is not automated anymore, thanks to docker hub removing automation for free account. Run the `/build-and-publish.sh` script instead.
 
 A builder docker image based on official python images, adding tools like docker for CI builds.
 

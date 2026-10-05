@@ -1,0 +1,23 @@
+version: 2
+updates:
+  # Python base images: one Dockerfile per supported Python minor version.
+  - package-ecosystem: docker
+    directories:
+      - "/3.*"
+    schedule:
+      interval: daily
+    groups:
+      python:
+        patterns:
+          - "python"
+    ignore:
+      # Each directory tracks a single Python minor version: only follow patch releases.
+      - dependency-name: "python"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly

@@ -1,16 +1,20 @@
 #!/bin/bash
+# Manual fallback for the GitHub Actions workflow: builds the same versions,
+# read from the per-version Dockerfiles (3.x/Dockerfile).
+set -euo pipefail
 
-# Build all images
-docker build -t papaux/python-builder:3.11 --build-arg PYTHON_VERSION=3.11 .
-docker build -t papaux/python-builder:3.12 --build-arg PYTHON_VERSION=3.12 .
-docker build -t papaux/python-builder:3.13 --build-arg PYTHON_VERSION=3.13 .
-docker build -t papaux/python-builder:3.14 --build-arg PYTHON_VERSION=3.14 .
+IMAGE_NAME=papaux/python-builder
+DIRS=$(ls -d 3.*/)
 
-# Push all images
-docker push papaux/python-builder:3.11
-docker push papaux/python-builder:3.12
-docker push papaux/python-builder:3.13
-docker push papaux/python-builder:3.14
+for dir in $DIRS; do
+    minor="${dir%/}"
+    version=$(sed -n 's/^FROM python:\([0-9.]*\)-slim.*/\1/p' "$dir/Dockerfile")
+    docker build --pull -t "$IMAGE_NAME:$version" -t "$IMAGE_NAME:$minor" "$dir"
+done
 
-
-
+for dir in $DIRS; do
+    minor="${dir%/}"
+    version=$(sed -n 's/^FROM python:\([0-9.]*\)-slim.*/\1/p' "$dir/Dockerfile")
+    docker push "$IMAGE_NAME:$version"
+    docker push "$IMAGE_NAME:$minor"
+done
